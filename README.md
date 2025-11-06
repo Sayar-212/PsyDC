@@ -20,7 +20,7 @@ PsyDC enables clinicians to validate synthetic psychological assessment data gen
 
 ```
 PsyDataCollection/
-├── psy_data_collection.html    # Landing page
+├── index.html                  # Landing page
 ├── psy_data_collection.css     # Landing page styles
 ├── survey.html                 # Main validation interface
 ├── survey.css                  # Survey interface styles
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 
 ### For Clinicians
 
-1. **Start**: Open `psy_data_collection.html` in a browser
+1. **Start**: Open `index.html` in a browser
 2. **Read Materials**: Click "Read Details" and "Guidelines" (required)
 3. **Begin Survey**: Click "Let's PsyDC" button
 4. **Enter Information**: Provide name and consent
@@ -87,7 +87,7 @@ python create_negative_logo.py
 ```
 
 ### Local Testing
-Simply open `psy_data_collection.html` in a browser. No build process required.
+Simply open `index.html` in a browser. No build process required.
 
 ### Deploy
 Upload all files to a web server or hosting platform (Vercel, Netlify, GitHub Pages, etc.)
