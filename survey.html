@@ -13,7 +13,27 @@
             <span id="patientNum">Patient 1/350</span>
             <span id="clinicianName"></span>
         </div>
-        <button id="exportBtn" class="export-btn">Export Results</button>
+        <div class="header-buttons">
+            <button id="toggleQuestions" class="toggle-btn">Show PHQ-9 Questions</button>
+            <button id="exportBtn" class="export-btn">Export Results</button>
+        </div>
+    </div>
+
+    <div id="questionsPanel" class="questions-panel" style="display: none;">
+        <h3>PHQ-9 Questions</h3>
+        <p><strong>Over the last 2 weeks, how often have you been bothered by:</strong></p>
+        <ol>
+            <li>Little interest or pleasure in doing things</li>
+            <li>Feeling down, depressed, or hopeless</li>
+            <li>Trouble falling or staying asleep, or sleeping too much</li>
+            <li>Feeling tired or having little energy</li>
+            <li>Poor appetite or overeating</li>
+            <li>Feeling bad about yourself or that you are a failure</li>
+            <li>Trouble concentrating on things</li>
+            <li>Moving or speaking slowly, or being fidgety/restless</li>
+            <li>Thoughts that you would be better off dead or hurting yourself</li>
+        </ol>
+        <p><strong>Response Scale:</strong> (0) Not at all • (1) Several days • (2) More than half the days • (3) Nearly every day</p>
     </div>
 
     <main class="survey-container">

@@ -159,6 +159,7 @@ document.getElementById('submitCorrection').addEventListener('click', () => {
 document.getElementById('prevBtn').addEventListener('click', () => {
     if (currentIndex > 0) {
         currentIndex--;
+        saveProgress();
         loadPatient();
     }
 });
@@ -304,4 +305,31 @@ document.getElementById('exportBtn').addEventListener('click', async () => {
     const fileName = clinicianName ? `psydc_${clinicianName.replace(/\s+/g, '_')}_${Date.now()}.pdf` : `psydc_report_${Date.now()}.pdf`;
     doc.save(fileName);
     alert('✅ PDF report generated successfully!');
+});
+
+// PHQ-9 Questions Toggle Functionality
+document.getElementById('toggleQuestions').addEventListener('click', () => {
+    const panel = document.getElementById('questionsPanel');
+    const button = document.getElementById('toggleQuestions');
+    
+    if (panel.style.display === 'none' || panel.style.display === '') {
+        panel.style.display = 'block';
+        button.textContent = 'Hide PHQ-9 Questions';
+    } else {
+        panel.style.display = 'none';
+        button.textContent = 'Show PHQ-9 Questions';
+    }
+});
+
+// Close questions panel when clicking outside
+document.addEventListener('click', (e) => {
+    const panel = document.getElementById('questionsPanel');
+    const button = document.getElementById('toggleQuestions');
+    
+    if (panel.style.display === 'block' && 
+        !panel.contains(e.target) && 
+        !button.contains(e.target)) {
+        panel.style.display = 'none';
+        button.textContent = 'Show PHQ-9 Questions';
+    }
 });
