@@ -13,7 +13,7 @@ PsyDC enables clinicians to validate synthetic psychological assessment data gen
 - **Real-time Scoring**: PHQ-9 score calculation with severity classification
 - **Validation Workflow**: Mark assessments as valid/invalid with optional corrections
 - **Progress Tracking**: Visual progress indicators and statistics
-- **Data Export**: Automated email delivery of validation results
+- **Data Export**: PDF report generation with validation results
 - **Responsive Design**: Works across desktop and mobile devices
 
 ## 📁 Project Structure
@@ -27,12 +27,9 @@ PsyDataCollection/
 ├── survey.js                   # Survey logic and validation
 ├── guidelines.html             # Clinician guidelines
 ├── survey_data.json            # Patient response data (350+ entries)
-├── api/
-│   └── send-email.js          # Email service endpoint
 ├── logo-icon.png              # Main logo
 ├── logo-icon-negative.png     # Inverted logo
 ├── create_negative_logo.py    # Logo generation script
-├── package.json               # Node.js dependencies
 └── requirements.txt           # Python dependencies
 
 ```
@@ -41,29 +38,16 @@ PsyDataCollection/
 
 ### Prerequisites
 - Modern web browser (Chrome, Firefox, Safari, Edge)
-- Node.js (for email functionality)
-- Python 3.x (for logo generation)
+- Python 3.x (optional, for logo generation)
 
 ### Installation
 
 1. **Clone or download the repository**
 
-2. **Install Node.js dependencies** (for email service):
-```bash
-npm install
-```
-
-3. **Install Python dependencies** (optional, for logo generation):
+2. **Install Python dependencies** (optional, for logo generation):
 ```bash
 pip install -r requirements.txt
 ```
-
-### Configuration
-
-**Email Service Setup:**
-- The platform uses a serverless email API endpoint
-- Email credentials are configured in `api/send-email.js`
-- Results are sent to: `sayar.basu.cse26@heritageit.edu.in`
 
 ## 🎮 Usage
 
@@ -77,7 +61,7 @@ pip install -r requirements.txt
    - Check AI-calculated scores
    - Mark as Valid or Invalid
    - Provide corrections if needed
-6. **Export Results**: Complete all 350 validations and export
+6. **Export Results**: Complete all 350 validations and download PDF report
 
 ### PHQ-9 Scoring Guide
 
