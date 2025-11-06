@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Guidelines - PsyDC</title>
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="stylesheet" href="psy_data_collection.css">
+    <style>
+        .guidelines-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 6% 4rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .guidelines-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .guidelines-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .guidelines-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .guidelines-header p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        .guideline-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .guideline-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .guideline-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 220, 150, 0.2);
+            border: 2px solid rgba(255, 220, 150, 0.5);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .guideline-content {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 2rem;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="guidelines-container">
+            <div class="guidelines-header">
+                <img src="logo-icon.png" alt="Logo" class="guidelines-logo">
+                <h1>Validation Guidelines</h1>
+                <p>Clinical Protocol for Synthetic Data Assessment</p>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-number">1</div>
+                <div class="guideline-content">
+                    <strong>Dataset Composition:</strong> The validation dataset comprises over 350 synthetically generated case profiles, each representing a unique simulated individual. These profiles have been algorithmically constructed to mirror realistic patient presentations across the depression severity spectrum, providing a comprehensive corpus for clinical validation assessment.
+                </div>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-number">2</div>
+                <div class="guideline-content">
+                    <strong>Data Structure:</strong> Each case profile contains nine Patient Health Questionnaire (PHQ-9) responses in conversational format, accompanied by the system-generated numerical score (0-27 range) and corresponding severity classification. Your role is to evaluate the clinical accuracy and appropriateness of these automated assessments against established diagnostic criteria.
+                </div>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-number">3</div>
+                <div class="guideline-content">
+                    <strong>Binary Validation Decision:</strong> For each case, you will be presented with the synthetic responses and system-assigned scores. If you concur that the automated scoring accurately reflects the clinical presentation and aligns with PHQ-9 standardized interpretation guidelines, select "Yes" to validate the assessment. If you identify any discrepancies, inconsistencies, or clinically inappropriate mappings, select "No" to flag the case for revision.
+                </div>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-number">4</div>
+                <div class="guideline-content">
+                    <strong>Corrective Assessment Protocol:</strong> When selecting "No," you are required to provide your clinical judgment by entering the appropriate total score and severity level that accurately represents the case presentation. Additionally, please provide a brief clinical rationale explaining the deviation from the system-generated assessment. This documentation is essential for refining the algorithmic scoring methodology and ensuring clinical validity.
+                </div>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-number">5</div>
+                <div class="guideline-content">
+                    <strong>Timeline and Flexibility:</strong> This validation study operates on a flexible timeline with no rigid daily quotas. While we request completion within a maximum period of one month, you may proceed at a pace that allows for thorough clinical consideration of each case. Quality of assessment takes precedence over speed of completion.
+                </div>
+            </div>
+
+            <div class="guideline-item">
+                <div class="guideline-number">6</div>
+                <div class="guideline-content">
+                    <strong>Clinical Authority and Final Determination:</strong> Your professional clinical judgment serves as the gold standard for this validation process. All assessments, corrections, and recommendations you provide will be considered definitive and absolute. The integrity of this research depends entirely on your expertise in applying established clinical standards over algorithmic outputs. Your determinations will directly inform the refinement and validation of the synthetic data generation system.
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="psy_data_collection.html" class="back-btn">Back to Home</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

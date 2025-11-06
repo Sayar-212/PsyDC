@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsyDC - Survey Validation</title>
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="stylesheet" href="survey.css">
+</head>
+<body>
+    <div class="header">
+        <div class="progress-info">
+            <span id="patientNum">Patient 1/350</span>
+            <span id="clinicianName"></span>
+        </div>
+        <button id="exportBtn" class="export-btn">Export Results</button>
+    </div>
+
+    <main class="survey-container">
+        <div class="patient-card">
+            <h2>PHQ-9 Assessment Review</h2>
+            
+            <div class="score-section">
+                <div class="score-box">
+                    <label>AI Score</label>
+                    <div class="score-value" id="aiScore"></div>
+                </div>
+                <div class="severity-box">
+                    <label>AI Severity</label>
+                    <div class="severity-value" id="aiSeverity"></div>
+                </div>
+            </div>
+
+            <div class="answers-section">
+                <div id="answersList"></div>
+            </div>
+
+            <div class="nav-buttons">
+                <button id="prevBtn" class="btn-nav">← Previous</button>
+                <button id="nextBtn" class="btn-nav">Next →</button>
+            </div>
+
+            <div class="action-buttons">
+                <button id="validBtn" class="btn-valid">Valid</button>
+                <button id="invalidBtn" class="btn-invalid">Not Valid</button>
+            </div>
+
+            <div id="correctionForm" class="correction-form" style="display:none;">
+                <h3>Provide Correction</h3>
+                <input type="number" id="newScore" placeholder="Corrected Score (0-27)" min="0" max="27" required>
+                <input type="text" id="newSeverity" placeholder="Corrected Severity" required>
+                <textarea id="reason" placeholder="Reason for correction" rows="3" required></textarea>
+                <button id="submitCorrection" class="btn-submit">Submit & Next</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="survey.js"></script>
+</body>
+</html>

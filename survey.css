@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background: #000;
+    color: #fff;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -10%;
+    right: -5%;
+    width: 70%;
+    height: 100%;
+    background: radial-gradient(circle at top right, 
+                rgba(255, 240, 200, 0.4) 0%, 
+                rgba(255, 220, 150, 0.3) 15%, 
+                rgba(255, 200, 100, 0.2) 30%, 
+                rgba(255, 180, 80, 0.12) 45%, 
+                transparent 65%);
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 3rem;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.progress-info {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.export-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.export-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.survey-container {
+    padding: 8rem 2rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.patient-card {
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 3rem;
+}
+
+.patient-card h2 {
+    font-family: 'Felix Titling', 'Trajan Pro', Georgia, serif;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 220, 150, 0.9);
+    text-align: center;
+}
+
+.answers-section {
+    margin: 2rem 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.answer-item {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid rgba(255, 220, 150, 0.5);
+}
+
+.answer-item em {
+    color: rgba(255, 220, 150, 0.9);
+    font-style: normal;
+    font-weight: 600;
+    display: block;
+    margin-top: 0.3rem;
+}
+
+.score-section {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+    justify-content: center;
+}
+
+.score-box, .severity-box {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex: 1;
+}
+
+.score-box label, .severity-box label {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.score-value, .severity-value {
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgba(255, 220, 150, 0.9);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-nav {
+    flex: 1;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-nav:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-valid, .btn-invalid {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+}
+
+.btn-valid {
+    background: rgba(100, 255, 100, 0.2);
+    color: #fff;
+    border: 1px solid rgba(100, 255, 100, 0.5);
+}
+
+.btn-valid:hover {
+    background: rgba(100, 255, 100, 0.3);
+}
+
+.btn-invalid {
+    background: rgba(255, 100, 100, 0.2);
+    color: #fff;
+    border: 1px solid rgba(255, 100, 100, 0.5);
+}
+
+.btn-invalid:hover {
+    background: rgba(255, 100, 100, 0.3);
+}
+
+.correction-form {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.correction-form h3 {
+    font-family: 'Felix Titling', 'Trajan Pro', Georgia, serif;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 220, 150, 0.9);
+}
+
+.correction-form input, .correction-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-family: inherit;
+}
+
+.correction-form input:focus, .correction-form textarea:focus {
+    outline: none;
+    border-color: rgba(255, 220, 150, 0.5);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
+}

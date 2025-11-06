@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsyDC - Validation Platform</title>
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="stylesheet" href="psy_data_collection.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <a href="https://psyfypass.vercel.app" class="beta-link" target="_blank">Try Beta Psy</a>
+    <a href="https://www.dropbox.com/scl/fi/er3on21f6iwxom8d64bch/Psy_Clinical_Guide.pdf?rlkey=ozz8iacnp0bultpt6u5wx3v8p&st=omc39krx&raw=1" class="questionnaire-link" target="_blank">Read Details</a>
+    <main>
+        <section class="hero">
+            <div class="hero-badge">Clinician Validation Platform</div>
+            <img src="logo-icon.png" alt="Logo" class="hero-logo">
+            <h1>Synthetic Data<br/><span class="highlight animated">Validation</span></h1>
+            <p>Clinical review tool for validating AI-generated psychological assessment data</p>
+            <div class="hero-actions">
+                <button class="btn-primary">Let's Psy<span class="gradient-text">DC</span></button>
+                <button class="btn-secondary" onclick="window.location.href='guidelines.html'">Guidelines</button>
+                <div class="btn-wrapper">
+                    <button class="btn-secondary">Upload Data</button>
+                    <span class="coming-soon">Soon</span>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">350+</div>
+                    <div class="stat-label">Data Points</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">Clinical</div>
+                    <div class="stat-label">Validation</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">AI-Gen</div>
+                    <div class="stat-label">Synthetic</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="clinicianModal" class="modal">
+        <div class="modal-content">
+            <h2>Clinician Information</h2>
+            <form id="clinicianForm">
+                <input type="text" id="clinicianName" placeholder="Enter your name" required>
+                <label class="consent-label">
+                    <input type="checkbox" id="consentCheck" required>
+                    <span>I voluntarily agree to participate in this survey</span>
+                </label>
+                <button type="submit" class="btn-submit">Start Survey</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.questionnaire-link').addEventListener('click', () => {
+            localStorage.setItem('readDetails', 'true');
+        });
+        
+        document.querySelector('.btn-secondary').addEventListener('click', () => {
+            localStorage.setItem('readGuidelines', 'true');
+        });
+        
+        document.querySelector('.btn-primary').addEventListener('click', (e) => {
+            const readDetails = localStorage.getItem('readDetails');
+            const readGuidelines = localStorage.getItem('readGuidelines');
+            
+            if (!readDetails || !readGuidelines) {
+                e.preventDefault();
+                
+                if (!readDetails) {
+                    document.querySelector('.questionnaire-link').classList.add('glow-alert');
+                }
+                
+                if (!readGuidelines) {
+                    document.querySelector('.btn-secondary').classList.add('glow-alert');
+                }
+                
+                alert('Please read the Details and Guidelines before starting the survey.');
+            } else {
+                document.getElementById('clinicianModal').style.display = 'flex';
+            }
+        });
+
+        document.getElementById('clinicianForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('clinicianName').value;
+            const consent = document.getElementById('consentCheck').checked;
+            
+            if (name && consent) {
+                localStorage.setItem('clinicianName', name);
+                localStorage.setItem('clinicianConsent', 'true');
+                // Navigate to survey page
+                window.location.href = 'survey.html';
+            }
+        });
+    </script>
+
+    <style>
+        .glow-alert {
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 100, 100, 0.3);
+                border-color: rgba(255, 100, 100, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(255, 100, 100, 0.9);
+                border-color: rgba(255, 100, 100, 0.9);
+            }
+        }
+    </style>
+</body>
+</html>

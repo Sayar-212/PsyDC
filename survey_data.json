@@ -1,0 +1,59 @@
+{
+  "questions": [
+    "Little interest or pleasure in doing things",
+    "Feeling down, depressed, or hopeless",
+    "Trouble falling or staying asleep, or sleeping too much",
+    "Feeling tired or having little energy",
+    "Poor appetite or overeating",
+    "Feeling bad about yourself or that you are a failure",
+    "Trouble concentrating on things",
+    "Moving or speaking slowly, or being fidgety/restless",
+    "Thoughts that you would be better off dead or hurting yourself"
+  ],
+  "choices": [
+    "Not at all",
+    "Several days",
+    "More than half the days",
+    "Nearly every day"
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "answers": [
+        "Nearly every day",
+        "More than half the days",
+        "Several days",
+        "Nearly every day",
+        "Not at all",
+        "More than half the days",
+        "Several days",
+        "Not at all",
+        "Not at all"
+      ],
+      "ai_score": 15,
+      "ai_severity": "Moderately Severe Depression",
+      "validity": null,
+      "adjusted_score": null,
+      "adjusted_severity": null
+    },
+    {
+      "id": 2,
+      "answers": [
+        "Not at all",
+        "Several days",
+        "Not at all",
+        "Several days",
+        "Not at all",
+        "Not at all",
+        "Not at all",
+        "Not at all",
+        "Not at all"
+      ],
+      "ai_score": 3,
+      "ai_severity": "Minimal Depression",
+      "validity": null,
+      "adjusted_score": null,
+      "adjusted_severity": null
+    }
+  ]
+}
