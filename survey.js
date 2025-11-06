@@ -116,6 +116,7 @@ document.getElementById('validBtn').addEventListener('click', () => {
 
 document.getElementById('invalidBtn').addEventListener('click', () => {
     document.getElementById('correctionForm').style.display = 'block';
+    document.getElementById('correctionForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 document.getElementById('submitCorrection').addEventListener('click', () => {
