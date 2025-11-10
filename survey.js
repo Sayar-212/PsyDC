@@ -37,7 +37,7 @@ document.getElementById('clinicianName').textContent = `Clinician: ${clinicianNa
 
 fetch('survey_data.json')
     .then(r => r.json())
-    .then(data => {
+    .then(async data => {
         questions = data.questions;
         choices = data.choices;
         patients = data.patients;
@@ -49,12 +49,14 @@ async function loadProgress() {
     try {
         const response = await fetch(`${SCRIPT_URL}?action=getProgress&clinician=${encodeURIComponent(clinicianName)}`);
         const data = await response.json();
-        if (data.validations) {
+        if (data && data.validations) {
             validations = data.validations;
             currentIndex = data.currentIndex || 0;
         }
     } catch (error) {
-        console.log('No previous progress found');
+        console.log('No previous progress found, starting fresh');
+        validations = [];
+        currentIndex = 0;
     }
 }
 
