@@ -37,46 +37,44 @@ document.getElementById('clinicianName').textContent = `Clinician: ${clinicianNa
 
 fetch('survey_data.json')
     .then(r => r.json())
-    .then(async data => {
+    .then(data => {
         questions = data.questions;
         choices = data.choices;
         patients = data.patients;
-        await loadProgress();
+        loadProgress();
         loadPatient();
     });
 
-async function loadProgress() {
-    try {
-        const response = await fetch(`${SCRIPT_URL}?action=getProgress&clinician=${encodeURIComponent(clinicianName)}`);
-        const data = await response.json();
-        if (data && data.validations) {
-            validations = data.validations;
-            currentIndex = data.currentIndex || 0;
-        }
-    } catch (error) {
-        console.log('No previous progress found, starting fresh');
-        validations = [];
-        currentIndex = 0;
-    }
+function loadProgress() {
+    fetch(`${SCRIPT_URL}?action=getProgress&clinician=${encodeURIComponent(clinicianName)}`)
+        .then(r => r.json())
+        .then(data => {
+            if (data && data.validations) {
+                validations = data.validations;
+                currentIndex = data.currentIndex || 0;
+                loadPatient(); // Reload patient with progress
+            }
+        })
+        .catch(error => {
+            console.log('No previous progress found, starting fresh');
+        });
 }
 
-async function saveProgress() {
-    try {
-        await fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                action: 'saveProgress',
-                clinician: clinicianName,
-                validations,
-                currentIndex,
-                lastSaved: new Date().toISOString()
-            })
-        });
-    } catch (error) {
+function saveProgress() {
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            action: 'saveProgress',
+            clinician: clinicianName,
+            validations,
+            currentIndex,
+            lastSaved: new Date().toISOString()
+        })
+    }).catch(error => {
         console.error('Progress save failed:', error);
-    }
+    });
 }
 
 function loadPatient() {
@@ -127,7 +125,7 @@ document.getElementById('validBtn').addEventListener('click', () => {
     });
     syncToSheet(validations[validations.length - 1]);
     currentIndex++;
-    await saveProgress();
+    saveProgress();
     loadPatient();
 });
 
@@ -170,14 +168,14 @@ document.getElementById('submitCorrection').addEventListener('click', () => {
     document.getElementById('reason').value = '';
     
     currentIndex++;
-    await saveProgress();
+    saveProgress();
     loadPatient();
 });
 
 document.getElementById('prevBtn').addEventListener('click', () => {
     if (currentIndex > 0) {
         currentIndex--;
-        await saveProgress();
+        saveProgress();
         loadPatient();
     }
 });
@@ -185,7 +183,7 @@ document.getElementById('prevBtn').addEventListener('click', () => {
 document.getElementById('nextBtn').addEventListener('click', () => {
     if (currentIndex < patients.length - 1) {
         currentIndex++;
-        await saveProgress();
+        saveProgress();
         loadPatient();
     }
 });
