@@ -301,6 +301,54 @@ body::before {
     box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
 }
 
+.loading-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-content {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 220, 150, 0.3);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 220, 150, 0.3);
+    border-top: 3px solid rgba(255, 220, 150, 0.9);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1.5rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-content h3 {
+    color: rgba(255, 220, 150, 0.9);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.loading-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
 @media (max-width: 768px) {
     .questions-panel {
         position: fixed;
@@ -319,5 +367,10 @@ body::before {
     .toggle-btn {
         font-size: 0.8rem;
         padding: 0.5rem 1rem;
+    }
+    
+    .loading-content {
+        margin: 1rem;
+        padding: 2rem;
     }
 }

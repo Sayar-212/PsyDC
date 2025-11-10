@@ -36,7 +36,16 @@
         <p><strong>Response Scale:</strong> (0) Not at all • (1) Several days • (2) More than half the days • (3) Nearly every day</p>
     </div>
 
-    <main class="survey-container">
+    <!-- Loading Mask -->
+    <div id="loadingMask" class="loading-mask">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h3>Checking existing data...</h3>
+            <p>Please wait while we verify your progress</p>
+        </div>
+    </div>
+
+    <main class="survey-container" style="display: none;">
         <div class="patient-card">
             <h2>PHQ-9 Assessment Review</h2>
             

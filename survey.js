@@ -35,6 +35,9 @@ async function syncToSheet(validation) {
 
 document.getElementById('clinicianName').textContent = `Clinician: ${clinicianName}`;
 
+// Show loading mask initially
+document.getElementById('loadingMask').style.display = 'flex';
+
 fetch('survey_data.json')
     .then(r => r.json())
     .then(data => {
@@ -42,7 +45,6 @@ fetch('survey_data.json')
         choices = data.choices;
         patients = data.patients;
         loadProgress();
-        loadPatient();
     });
 
 function loadProgress() {
@@ -52,12 +54,36 @@ function loadProgress() {
             if (data && data.validations) {
                 validations = data.validations;
                 currentIndex = data.currentIndex || 0;
-                loadPatient(); // Reload patient with progress
+                showMessage(`Welcome back! Continuing from Patient ${currentIndex + 1}`);
+            } else {
+                showMessage('Starting fresh validation session');
             }
+            showSurvey();
         })
         .catch(error => {
             console.log('No previous progress found, starting fresh');
+            showMessage('Starting fresh validation session');
+            showSurvey();
         });
+}
+
+function showMessage(message) {
+    const loadingContent = document.querySelector('.loading-content');
+    loadingContent.innerHTML = `
+        <div class="spinner"></div>
+        <h3>${message}</h3>
+        <p>Loading survey interface...</p>
+    `;
+    
+    setTimeout(() => {
+        showSurvey();
+    }, 1500);
+}
+
+function showSurvey() {
+    document.getElementById('loadingMask').style.display = 'none';
+    document.querySelector('.survey-container').style.display = 'block';
+    loadPatient();
 }
 
 function saveProgress() {
