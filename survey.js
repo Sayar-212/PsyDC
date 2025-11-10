@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxV7oDhi4pgzfMfJj-Ci3Pm5BLeqFuz2CFgOAYZJK4F0HjN8U1hS2Gi3TwFQS4ZLug1EQ/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx7ZsBZ0pKLzWNjSlm6a6HK7ySp1oK0tR6VVfi8mgUv6G42XOY9vDwVDm9nhrfl2PM-/exec';
 
 let patients = [];
 let questions = [];
@@ -41,25 +41,40 @@ fetch('survey_data.json')
         questions = data.questions;
         choices = data.choices;
         patients = data.patients;
-        loadProgress();
+        await loadProgress();
         loadPatient();
     });
 
-function loadProgress() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-        const progress = JSON.parse(saved);
-        validations = progress.validations || [];
-        currentIndex = progress.currentIndex || 0;
+async function loadProgress() {
+    try {
+        const response = await fetch(`${SCRIPT_URL}?action=getProgress&clinician=${encodeURIComponent(clinicianName)}`);
+        const data = await response.json();
+        if (data.validations) {
+            validations = data.validations;
+            currentIndex = data.currentIndex || 0;
+        }
+    } catch (error) {
+        console.log('No previous progress found');
     }
 }
 
-function saveProgress() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        validations,
-        currentIndex,
-        lastSaved: new Date().toISOString()
-    }));
+async function saveProgress() {
+    try {
+        await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'saveProgress',
+                clinician: clinicianName,
+                validations,
+                currentIndex,
+                lastSaved: new Date().toISOString()
+            })
+        });
+    } catch (error) {
+        console.error('Progress save failed:', error);
+    }
 }
 
 function loadPatient() {
@@ -110,7 +125,7 @@ document.getElementById('validBtn').addEventListener('click', () => {
     });
     syncToSheet(validations[validations.length - 1]);
     currentIndex++;
-    saveProgress();
+    await saveProgress();
     loadPatient();
 });
 
@@ -153,14 +168,14 @@ document.getElementById('submitCorrection').addEventListener('click', () => {
     document.getElementById('reason').value = '';
     
     currentIndex++;
-    saveProgress();
+    await saveProgress();
     loadPatient();
 });
 
 document.getElementById('prevBtn').addEventListener('click', () => {
     if (currentIndex > 0) {
         currentIndex--;
-        saveProgress();
+        await saveProgress();
         loadPatient();
     }
 });
@@ -168,7 +183,7 @@ document.getElementById('prevBtn').addEventListener('click', () => {
 document.getElementById('nextBtn').addEventListener('click', () => {
     if (currentIndex < patients.length - 1) {
         currentIndex++;
-        saveProgress();
+        await saveProgress();
         loadPatient();
     }
 });
