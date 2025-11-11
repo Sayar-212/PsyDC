@@ -109,6 +109,8 @@ function loadPatient() {
         return;
     }
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     const patient = patients[currentIndex];
     document.getElementById('patientNum').textContent = `Patient ${currentIndex + 1}/${patients.length}`;
     
