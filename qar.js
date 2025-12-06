@@ -102,7 +102,3 @@ document.getElementById('psyruleScore').addEventListener('input', (e) => {
     const score = parseInt(e.target.value);
     document.getElementById('severity').textContent = (score >= 0 && score <= 27) ? getSeverity(score) : '-';
 });
-
-document.getElementById('exportBtn').addEventListener('click', () => {
-    alert('Data is automatically saved to Google Sheets. Check the QAR sheet in your spreadsheet.');
-});
