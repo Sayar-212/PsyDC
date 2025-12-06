@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Test - PsyDC</title>
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="stylesheet" href="psy_data_collection.css">
+</head>
+<body>
+    <main>
+        <section class="hero">
+            <img src="logo-icon.png" alt="Logo" class="hero-logo">
+            <h1><span class="gradient-text">QA</span> Test Dashboard</h1>
+            <p>Select your testing mode</p>
+            
+            <div class="hero-actions" style="margin-top: 2rem;">
+                <button class="btn-primary" onclick="window.location.href='qai.html'">QAI</button>
+                <button class="btn-primary" onclick="window.location.href='qar.html'">QAR</button>
+            </div>
+            
+            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: rgba(255, 255, 255, 0.6); font-family: 'Times New Roman', Times, serif;"><strong>Note:</strong> QAI is for AI Predicted Score and QAR is for Rule Based</p>
+        </section>
+    </main>
+
+    <script>
+        if (localStorage.getItem('qaAuthenticated') !== 'true') {
+            window.location.href = 'qa_auth.html';
+        }
+    </script>
+</body>
+</html>

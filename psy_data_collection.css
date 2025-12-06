@@ -368,3 +368,8 @@ body::before {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+
+.new-tag {
+    background: linear-gradient(135deg, #00f5ff 0%, #ff00ff 100%);
+}

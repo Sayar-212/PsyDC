@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QAI - PsyGen Score Entry</title>
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="stylesheet" href="survey.css">
+</head>
+<body>
+    <div class="header">
+        <div class="progress-info">
+            <span id="patientNum">Patient 001/350</span>
+            <span style="color: rgba(255, 220, 150, 0.9);">QAI Mode</span>
+        </div>
+        <div class="header-buttons">
+            <button id="exportBtn" class="export-btn">Export QAI Data</button>
+        </div>
+    </div>
+
+    <main class="survey-container">
+        <div class="patient-card">
+            <h2 id="patientId">Patient 001</h2>
+            
+            <div class="score-section">
+                <div class="score-box">
+                    <label>PsyGen Score</label>
+                    <input type="number" id="psygenScore" min="0" max="27" placeholder="Enter score (0-27)" 
+                           style="width: 100%; padding: 1rem; font-size: 1.5rem; text-align: center; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff;">
+                </div>
+                <div class="severity-box">
+                    <label>Severity</label>
+                    <div class="severity-value" id="severity">-</div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button id="prevBtn" class="btn-nav">← Previous</button>
+                <button id="nextBtn" class="btn-nav">Next →</button>
+            </div>
+
+            <div class="action-buttons">
+                <button id="saveBtn" class="btn-valid">Save & Next</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="qai.js"></script>
+</body>
+</html>

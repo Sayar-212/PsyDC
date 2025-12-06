@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Test Authentication - PsyDC</title>
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="stylesheet" href="psy_data_collection.css">
+</head>
+<body>
+    <main>
+        <section class="hero">
+            <img src="logo-icon.png" alt="Logo" class="hero-logo">
+            <h1><span class="gradient-text">QA</span> Test Access</h1>
+            <p>Enter authentication token to proceed</p>
+            
+            <div class="modal-content" style="margin-top: 2rem;">
+                <form id="qaAuthForm">
+                    <input type="password" id="qaToken" placeholder="Enter Token" required style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 1rem; font-size: 1rem; width: 100%; outline: none;">
+                    <button type="submit" class="btn-submit" style="margin-top: 1.5rem; width: 100%;">Authenticate</button>
+                </form>
+                <p id="errorMsg" style="color: #ff6b6b; margin-top: 1rem; display: none; font-family: 'Times New Roman', Times, serif;">Invalid token. Please try again.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('qaAuthForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const token = document.getElementById('qaToken').value;
+            
+            if (token === 'Adib087') {
+                localStorage.setItem('qaAuthenticated', 'true');
+                window.location.href = 'qa.html';
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+                document.getElementById('qaToken').value = '';
+            }
+        });
+    </script>
+</body>
+</html>
