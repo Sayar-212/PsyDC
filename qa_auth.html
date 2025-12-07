@@ -31,6 +31,7 @@
             
             if (token === 'Adib087') {
                 localStorage.setItem('qaAuthenticated', 'true');
+                localStorage.setItem('qaToken', token);
                 window.location.href = 'qa.html';
             } else {
                 document.getElementById('errorMsg').style.display = 'block';
