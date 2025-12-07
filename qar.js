@@ -1,7 +1,7 @@
 let currentPatient = 0;
 let surveyData = null;
 let qarData = {};
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx50oqzWv4JjYlZ8nipD76Zc-Ezc9kbRmyIuA-D8A-GusVuAO0NVD7b21WlSnh2NHdmkw/exec';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwJLWpM3EAczkfYcN8MeFO7weX9P7K5v11VWYeVjltmv_TCKTNWpIgZqI57VrK_Tjd8rQ/exec';
 
 Promise.all([
     fetch('survey_data.json').then(res => res.json()),
