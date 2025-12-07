@@ -7,6 +7,7 @@ Promise.all([
     fetch('survey_data.json').then(res => res.json()),
     fetch(SHEET_URL + '?action=getQAIProgress').then(res => res.json())
 ]).then(([data, progress]) => {
+    console.log('Loaded progress:', progress);
     surveyData = data;
     qaiData = progress;
     
@@ -14,12 +15,13 @@ Promise.all([
         const patientId = String(i + 1).padStart(3, '0');
         if (!qaiData[patientId]) {
             currentPatient = i;
+            console.log('Starting from patient:', patientId);
             break;
         }
     }
     
     updateDisplay();
-});
+}).catch(err => console.error('Error loading data:', err));
 
 function getSeverity(score) {
     if (score >= 0 && score <= 4) return 'Minimal Depression';
