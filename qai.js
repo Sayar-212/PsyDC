@@ -14,8 +14,7 @@ Promise.all([
     for (let i = 0; i < surveyData.patients.length; i++) {
         const patientNum = i + 1;
         const patientId = String(patientNum).padStart(3, '0');
-        console.log(`Checking patient ${patientId}: qaiData[${patientNum}] =`, qaiData[patientNum]);
-        if (!qaiData[patientNum]) {
+        if (qaiData[patientNum] === undefined) {
             currentPatient = i;
             console.log('Starting from patient:', patientId);
             break;

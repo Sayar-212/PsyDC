@@ -13,7 +13,7 @@ Promise.all([
     for (let i = 0; i < surveyData.patients.length; i++) {
         const patientNum = i + 1;
         const patientId = String(patientNum).padStart(3, '0');
-        if (!qarData[patientNum]) {
+        if (qarData[patientNum] === undefined) {
             currentPatient = i;
             break;
         }
