@@ -11,8 +11,9 @@ Promise.all([
     qarData = progress;
     
     for (let i = 0; i < surveyData.patients.length; i++) {
-        const patientId = String(i + 1).padStart(3, '0');
-        if (!qarData[patientId]) {
+        const patientNum = i + 1;
+        const patientId = String(patientNum).padStart(3, '0');
+        if (!qarData[patientNum]) {
             currentPatient = i;
             break;
         }
